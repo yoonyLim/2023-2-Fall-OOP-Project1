@@ -16,12 +16,32 @@ Do not use global variables of any kind.  Global constants are great.
 */
 
 // commands는 열 파일, output은 슬 파일 경로 나타냄
-void minesweeper(string commands, string output) {
+void load(string commands, ifstream& fin, char (&board)[8][8], char (&display)[8][8]) {
+    fin.open(commands);
+    string line;
 
-}
+    if(!fin) {
+        cout << "no file" << endl;
+    } else {
+        cout << "success" << endl;
+    }
 
-void _load_() {
 
+    /*
+    for (int i = 0; getline(fin, line); i++) {
+        for (int j = 0; j < 8; j++) {
+            cout << "line char: " << line[j] << endl;
+            board[i][j] = line[j];
+        }
+    }
+
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            cout << board[i][j];
+        }
+        cout << endl;
+    }
+     */
 }
 
 void _touch_() {
@@ -30,4 +50,20 @@ void _touch_() {
 
 void _display_() {
 
+}
+
+void minesweeper(string commands, string output) {
+    char board[8][8];
+    char display[8][8] = {{'.'}};
+
+    ifstream fin;
+
+    load(commands, fin, board, display);
+
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            cout << board[i][j];
+        }
+        cout << endl;
+    }
 }
